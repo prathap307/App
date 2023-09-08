@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        select {
+            padding: 10px;
+            font-size: 16px;
+        }
+        #question {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mobile App</h1>
+    
+    <label for="topicSelect">Select a topic:</label>
+    <select id="topicSelect">
+        <option value="Safety">Safety</option>
+        <option value="8Waste">8 Waste</option>
+        <option value="5S">5S</option>
+        <option value="ProcessFlow">Process Flow</option>
+    </select>
+    
+    <div id="question">
+        <!-- Questions will be displayed here -->
+    </div>
+
+    <script>
+        // Define questions related to each topic
+        const questions = {
+            Safety: "Is safety important in the workplace? (True/False)",
+            "8Waste": "Is reducing waste a key goal in Lean manufacturing? (True/False)",
+            "5S": "Does 5S involve organizing the workplace for efficiency? (True/False)",
+            ProcessFlow: "Is optimizing the process flow crucial for efficiency? (True/False)"
+        };
+
+        // Get references to HTML elements
+        const topicSelect = document.getElementById("topicSelect");
+        const questionElement = document.getElementById("question");
+
+        // Function to update the displayed question based on the selected topic
+        function updateQuestion() {
+            const selectedTopic = topicSelect.value;
+            const question = questions[selectedTopic];
+            if (question) {
+                questionElement.textContent = question;
+            } else {
+                questionElement.textContent = "Select a topic to see a question.";
+            }
+        }
+
+        // Add an event listener to the topic selection
+        topicSelect.addEventListener("change", updateQuestion);
+
+        // Initialize the question based on the default selected topic
+        updateQuestion();
+    </script>
+</body>
+</html>
